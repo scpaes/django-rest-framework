@@ -20,3 +20,15 @@ class ProgramaSerializerTestCase(TestCase):
 
         data = self.serializer.data
         self.assertEqual(set(data.keys()), set(['titulo', 'data_lancamento', 'likes', 'tipo']))
+
+
+    def test_valor_dos_campos(self):
+        """
+            Teste para verificar se o valor dos campos serializados é igual a model
+        """
+
+        data = self.serializer.data
+        self.assertEqual(self.programa.titulo, data['titulo'])
+        self.assertEqual(self.programa.tipo, data['tipo'])
+        self.assertEqual(self.programa.data_lancamento, data['data_lancamento'])
+        self.assertEqual(self.programa.likes, data['likes'])
